@@ -21,5 +21,6 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)/html.zip'
-    artifactName: 'drop'
+    artifactName: 'drop'  # Ensure artifact name is "drop"
+
 
