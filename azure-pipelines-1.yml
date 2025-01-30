@@ -1,0 +1,23 @@
+# HTML
+# Archive your static HTML project and save it with the build record.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(build.sourcesDirectory)'
+    includeRootFolder: false
+- task: PublishBuildArtifacts@1
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'vaibhav (94fbeb55-aa01-4ba5-9046-c374f6fc4afa)'
+    appType: 'webAppLinux'
+    appName: 'PreethamCoinTossApp'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
